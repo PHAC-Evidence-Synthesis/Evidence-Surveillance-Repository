@@ -1,0 +1,23 @@
+---
+title: "Methods"
+---
+
+# Methods
+
+## Current Workflow
+
+1. Search the literature
+2. Import references into DistillerSR
+3. Screen studies for relevance
+4. Classify evidence
+5. Export references as a CSV
+6. Upload the CSV to GitHub
+7. GitHub Pages automatically publishes the updated website
+
+## Why GitHub?
+
+This prototype evaluates whether GitHub can serve as a centralized repository for evidence surveillance materials while minimizing maintenance requirements.
+
+## Status
+
+This website is a proof of concept and is not intended for production use.

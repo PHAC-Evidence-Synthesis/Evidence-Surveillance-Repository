@@ -1,0 +1,59 @@
+---
+title: "References"
+format:
+  html:
+    page-layout: full
+---
+
+# Evidence Database
+
+This table is generated from `data/references.csv`.
+
+```{ojs}
+references = FileAttachment("data/references.csv").csv({typed: true})
+```
+
+## Filter the evidence
+
+```{ojs}
+viewof outbreak_filter = Inputs.select(
+  ["All", ...new Set(references.map(d => d.Outbreak))],
+  {label: "Outbreak"}
+)
+```
+
+```{ojs}
+viewof study_design_filter = Inputs.select(
+  ["All", ...new Set(references.map(d => d["Study Design"]))],
+  {label: "Study Design"}
+)
+```
+
+```{ojs}
+viewof year_filter = Inputs.select(
+  ["All", ...new Set(references.map(d => d.Year))],
+  {label: "Year"}
+)
+```
+
+```{ojs}
+filtered_references = references.filter(d =>
+  (outbreak_filter === "All" || d.Outbreak === outbreak_filter) &&
+  (study_design_filter === "All" || d["Study Design"] === study_design_filter) &&
+  (year_filter === "All" || d.Year === year_filter)
+)
+```
+
+## Browse references
+
+```{ojs}
+Inputs.table(filtered_references, {
+  columns: ["Title", "Authors", "Year", "Outbreak", "Study Design", "Journal"],
+  sort: "Year",
+  reverse: true
+})
+```
+
+<a href="data/references.csv" download="references.csv" class="btn btn-primary">
+Download CSV
+</a>

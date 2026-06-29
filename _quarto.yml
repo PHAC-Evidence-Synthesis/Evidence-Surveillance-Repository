@@ -1,0 +1,23 @@
+project:
+  type: website
+
+website:
+  title: "Evidence Surveillance Hub"
+
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: references.qmd
+        text: References
+      - href: methods.qmd
+        text: Methods
+      - href: about.qmd
+        text: About
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: false
+    
