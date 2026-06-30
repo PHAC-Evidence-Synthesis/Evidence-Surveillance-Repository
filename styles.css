@@ -185,23 +185,7 @@ table {
   flex: 1;
 }
 
-.hero-image img {
-  max-width: 220px;
-  height: auto;
-  display: block;
-}
-
-@media (max-width: 768px) {
-  .hero-content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .hero-image img {
-    max-width: 180px;
-  }
-}
 .navbar-logo {
-  max-height: 32px;
+  max-height: 40px;
   width: auto;
 }
