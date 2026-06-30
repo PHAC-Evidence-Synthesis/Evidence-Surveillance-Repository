@@ -174,3 +174,30 @@ table {
   color: #da6f72;
   font-weight: 700;
 }
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-image img {
+  max-width: 220px;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-image img {
+    max-width: 180px;
+  }
+}
