@@ -67,4 +67,4 @@ for update in updates:
     f.write(f"[View evidence table](outbreaks/{update['slug']}/)\n")
     f.write(":::\n\n")
 
-        f.write(":::\n")
+f.write(":::\n")
