@@ -10,6 +10,14 @@ title: "Home"
 <div class="hero-subtitle">
 A prototype demonstrating how living evidence surveillance outputs can be published through a searchable, downloadable, and version-controlled platform.
 </div>
+
+</div>
+
+</div> class="hero-image">
+<img src="images/canadian-flag.png" alt="Evidence Surveillance Hub visual">
+</div>
+
+</div> 
 :::
 {{< include _recent-updates.md >}}
 ## Purpose
