@@ -201,3 +201,7 @@ table {
     max-width: 180px;
   }
 }
+.navbar-logo {
+  max-height: 32px;
+  width: auto;
+}
