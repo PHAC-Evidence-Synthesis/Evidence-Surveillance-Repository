@@ -60,14 +60,82 @@ viewof searched_references = Inputs.search(
   references,
   {placeholder: "Search all fields..."}
 )
+
+```
+## Filter the evidence
+
+```{ojs}
+//| echo: false
+
+cleanValue = value =>
+  value === null || value === undefined ? "" : String(value).trim()
 ```
 
+```{ojs}
+//| echo: false
+
+filterableColumns = visibleColumns.filter(column =>
+  column &&
+  column.trim() !== "" &&
+  !/^_+$/.test(column.trim()) &&
+  column.trim() !== "__evidence"
+)
+```
+
+```{ojs}
+//| echo: false
+
+filterOptions = Object.fromEntries(
+  filterableColumns.map(column => [
+    column,
+    ["All", ...Array.from(
+      new Set(
+        references
+          .map(row => cleanValue(row[column]))
+          .filter(value => value !== "")
+      )
+    ).sort()]
+  ])
+)
+```
+
+```{ojs}
+//| echo: false
+
+viewof selectedFilters = Inputs.form(
+  Object.fromEntries(
+    filterableColumns.map(column => [
+      column,
+      Inputs.select(filterOptions[column], {label: column})
+    ])
+  )
+)
+```
+
+```{ojs}
+//| echo: false
+
+filtered_references = searched_references.filter(row =>
+  filterableColumns.every(column =>
+    selectedFilters[column] === "All" ||
+    cleanValue(row[column]) === selectedFilters[column]
+  )
+)
+```
+
+```{ojs}
+//| echo: false
+
+html`<div class="status-box">
+<strong>${filtered_references.length}</strong> records shown after search and filters.
+</div>`
+```
 ## Browse table
 
 ```{ojs}
 //| echo: false
 
-Inputs.table(searched_references, {
+Inputs.table(filtered_references, {
   columns: visibleColumns,
   height: 700,
   select: false,
