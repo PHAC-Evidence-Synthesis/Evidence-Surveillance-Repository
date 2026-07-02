@@ -70,7 +70,18 @@ viewof searched_references = Inputs.search(
 Inputs.table(searched_references, {
   columns: visibleColumns,
   height: 700,
-  select: false
+  select: false,
+  format: {
+    URL: value =>
+      value
+        ? htl.html`<a href=${value} target="_blank" rel="noopener noreferrer">View link</a>`
+        : "",
+
+    DOI: value =>
+      value
+        ? htl.html`<a href=${`https://doi.org/${value}`} target="_blank" rel="noopener noreferrer">${value}</a>`
+        : ""
+  }
 })
 ```
 
