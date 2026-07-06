@@ -5,8 +5,25 @@ format:
     page-layout: full
 ---
 
-This page displays the current evidence surveillance table for Bundibugyo Ebolavirus.
+This page displays the current evidence surveillance for Bundibugyo Ebolavirus, covering publications from January 1, 2026 to present.
 
+Evidence surveillance is a systematic approach to identifying and characterizing literature on a topic through a continuous cycle, following the principles of evidence synthesis research. This evidence surveillance collects research on Ebola virus, with a focus on Bundibugyo ebolavirus and the 2026 outbreak in the Democratic Republic of the Congo and surrounding areas.
+
+For further information on our approach to evidence surveillance please see [Corrin et al. (2023)](https://doi.org/10.14745/ccdr.v49i01a02)  
+
+Contact email: evidence.synthesis-synthese.de.donnees.probantes@phac-aspc.gc.ca.  
+
+## Search strategy
+
+The search was developed by the Health Canada library to capture Bundibugyo ebolavirus literature. It was implemented in Embase, Medline, Global Health, Scopus, and EuropePMC to capture preprints. The search is run twice per week to capture new publications.
+
+Example search: 
+```text
+(TITLE_ABS:(((Bundibugyo or BDBV) AND (ebola virus* or virus* or viral* or ebola* or EBOV or EVD or EBOD)) or BEBOV) OR BODY:(((Bundibugyo or BDBV) AND (ebola virus* or virus* or viral* or ebola* or EBOV or EVD or EBOD)) or BEBOV) OR KEYWORD:(((Bundibugyo or BDBV) AND (ebola virus* or virus* or viral* or ebola* or EBOV or EVD or EBOD)) or BEBOV)) AND (FIRST_PDATE:2026)
+```
+
+A grey literature search has also been developed to identify new guidelines, evidence syntheses, risk assessments and other publications mainly from governments and international organizations:
+CDC, ECDC, WHO, UKHSA, PHAC, PAHO, and others as they are identified by a daily Google search "Bundibugyo virus" OR "Bundibugyo Ebola" OR "BDBV" to identify additional publications omitted by the search.
 The table is generated from the CSV file stored in this outbreak folder:
 
 `outbreaks/bundibugyo-ebola/data/references.csv`
@@ -24,6 +41,7 @@ visibleColumns = rawReferences.length > 0
   ? Object.keys(rawReferences[0]).filter(c =>
       c &&
       c.trim() !== "" &&
+      !/^_+$/.test(c.trim()) &&
       !c.startsWith("__") &&
       !c.toLowerCase().startsWith("unnamed")
     )
