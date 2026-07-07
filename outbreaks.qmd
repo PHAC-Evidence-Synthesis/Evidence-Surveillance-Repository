@@ -13,9 +13,9 @@ Each outbreak has its own folder, downloadable CSV and full dataset XLSX file. C
 
 Evidence surveillance data and background information for Hantavirus literature.
 
-<a href="outbreaks/hantavirus/" class="btn btn-primary">View evidence</a>
-
 <a href="outbreaks/hantavirus/background/" class="btn btn-primary">Background</a>
+
+<a href="outbreaks/hantavirus/" class="btn btn-primary">View evidence</a>
 :::
 
 ::: {.info-card}
@@ -23,7 +23,9 @@ Evidence surveillance data and background information for Hantavirus literature.
 
 Evidence surveillance data for Bundibugyo Ebolavirus literature.
 
-[View evidence](outbreaks/bundibugyo-ebola/)
+<a href="outbreaks/bundibugyo-ebola/background/" class="btn btn-primary">Background</a>
+
+<a href="outbreaks/bundibugyo-ebola/" class="btn btn-primary">View evidence</a>
 :::
 
 :::
