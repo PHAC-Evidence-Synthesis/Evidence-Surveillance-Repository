@@ -11,7 +11,7 @@ Evidence surveillance is a systematic approach to identifying and characterizing
 
 For further information on our approach to evidence surveillance please see [Corrin et al. (2023)](https://doi.org/10.14745/ccdr.v49i01a02)  
 
-Contact email: evidence.synthesis-synthese.de.donnees.probantes@phac-aspc.gc.ca.  
+**Contact email**: evidence.synthesis-synthese.de.donnees.probantes@phac-aspc.gc.ca.  
 
 ## Search strategy
 
