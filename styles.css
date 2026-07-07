@@ -19,11 +19,6 @@ a {
   text-decoration: underline;
 }
 
-a:hover {
-  color: #E61975;
-  text-decoration: underline;
-}
-
 /* Main content width */
 
 .quarto-title-block,
