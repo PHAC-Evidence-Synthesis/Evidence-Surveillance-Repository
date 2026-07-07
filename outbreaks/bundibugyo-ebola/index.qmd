@@ -34,7 +34,7 @@ CDC, ECDC, WHO, UKHSA, PHAC, PAHO, and others as they are identified by a daily 
 Characteristics of the publication are captured: language of the article, primary research or type of non-primary research, and publication status (published, pre-print, report)
 
 
-The table below is generated from the CSV file stored in this outbreak folder:
+**The table below is generated from the CSV file stored in this outbreak folder:*
 
 `outbreaks/bundibugyo-ebola/data/references.csv`
 
