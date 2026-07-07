@@ -10,10 +10,8 @@ Each outbreak has its own folder, downloadable CSV and full dataset XLSX file. C
 
 ::: {.info-card}
 ### Hantavirus
-
-Evidence surveillance data for Hantavirus literature.
-
-[View evidence](outbreaks/hantavirus/)
+Background: [Hantavirus](outbreaks)
+Evidence surveillance data for Hantavirus literature: [View evidence](outbreaks/hantavirus/)
 :::
 
 ::: {.info-card}
