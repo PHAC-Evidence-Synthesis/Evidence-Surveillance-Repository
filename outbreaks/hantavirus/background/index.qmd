@@ -98,14 +98,8 @@ format:
       <td>Associated with HPS in northeastern U.S.</td>
     </tr>
 
-    <tr class="note-row">
-      <td colspan="3">
-        <strong>Definition:</strong> Cardiopulmonary syndrome affects the lungs, including pulmonary edema, and often the heart/circulation, including cardiovascular collapse. HPS is less commonly used, but appears in the literature and is generally considered analogous to HCPS.
-      </td>
-    </tr>
-
-    <tr class="section-old">
-      <td colspan="3"><strong>OLD WORLD HANTAVIRUSES (Europe/Asia) causing Hemorrhagic Fever with Renal Syndrome (HFRS)</strong></td>
+    <tr class="row-purple">
+      <td colspan="3"><strong> Excluded: OLD WORLD HANTAVIRUSES (Europe/Asia) causing Hemorrhagic Fever with Renal Syndrome (HFRS)</strong></td>
     </tr>
     <tr>
       <td>Hantaan virus (HTNV)</td>
