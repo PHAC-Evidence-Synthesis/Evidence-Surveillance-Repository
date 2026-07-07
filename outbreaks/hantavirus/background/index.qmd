@@ -141,3 +141,17 @@ format:
 </table>
 
 </div>
+
+
+**Old World vs. New World Hantaviruses (with reservoirs and hotspots)
+
+<div class="hanta-table-wrapper">
+
+<table class="hanta-table">
+  <thead>
+    <tr>
+      <th>Virus</th>
+      <th>Geographic region</th>
+      <th>Human disease</th>
+    </tr>
+  </thead>
