@@ -142,7 +142,6 @@ format:
 
 </div>
 
-
 ## Old World vs New World Hantaviruses
 
 <div class="hanta-table-wrapper">
@@ -192,35 +191,39 @@ format:
     <tr>
       <td><strong>Geographic burden</strong></td>
       <td>~10,000–100,000 cases/year globally</td>
-      <td>Much rarer (hundreds–thousands reported)</td>
+      <td>Much rarer, with hundreds to thousands reported</td>
       <td>—</td>
     </tr>
 
     <tr>
       <td><strong>Most important viruses</strong></td>
-      <td>Hantaan (severe), Puumala (mild), Seoul (moderate)</td>
-      <td>Sin Nombre (North America), Andes (South America)</td>
+      <td>Hantaan, Puumala, Seoul</td>
+      <td>Sin Nombre, Andes</td>
       <td>—</td>
     </tr>
 
     <tr>
       <td><strong>Rodent reservoir types</strong></td>
-      <td>Murinae rodents (rats, Old World mice, voles)</td>
-      <td>Sigmodontine rodents (New World mice/rats)</td>
-      <td>Each virus linked to a specific rodent host</td>
+      <td>Murinae rodents, including rats, Old World mice, and voles</td>
+      <td>Sigmodontine rodents, including New World mice and rats</td>
+      <td>Each virus is linked to a specific rodent host.</td>
     </tr>
 
     <tr>
-      <td><strong>Typical reservoirs (examples)</strong></td>
+      <td><strong>Typical reservoirs</strong></td>
       <td>
-        - Hantaan → striped field mouse<br>
-        - Puumala → bank vole<br>
-        - Seoul → Norway rat
+        <ul>
+          <li>Hantaan → striped field mouse</li>
+          <li>Puumala → bank vole</li>
+          <li>Seoul → Norway rat</li>
+        </ul>
       </td>
       <td>
-        - Sin Nombre → deer mouse<br>
-        - Andes → long-tailed pygmy rice rat<br>
-        - Bayou → rice rat
+        <ul>
+          <li>Sin Nombre → deer mouse</li>
+          <li>Andes → long-tailed pygmy rice rat</li>
+          <li>Bayou → rice rat</li>
+        </ul>
       </td>
       <td>Strong virus–host specificity</td>
     </tr>
@@ -228,32 +231,36 @@ format:
     <tr>
       <td><strong>Hotspot regions</strong></td>
       <td>
-        - China, Korea (Hantaan)<br>
-        - Northern Europe (Puumala)<br>
-        - Balkans (Dobrava)<br>
-        - Worldwide urban (Seoul)
+        <ul>
+          <li>China, Korea — Hantaan</li>
+          <li>Northern Europe — Puumala</li>
+          <li>Balkans — Dobrava</li>
+          <li>Worldwide urban areas — Seoul</li>
+        </ul>
       </td>
       <td>
-        - U.S. Southwest & Canada (Sin Nombre)<br>
-        - Southern South America (Andes)<br>
-        - Brazil, Argentina, Paraguay (multiple species)<br>
-        - Panama (Choclo)
+        <ul>
+          <li>U.S. Southwest and Canada — Sin Nombre</li>
+          <li>Southern South America — Andes</li>
+          <li>Brazil, Argentina, Paraguay — multiple species</li>
+          <li>Panama — Choclo</li>
+        </ul>
       </td>
-      <td>Geographic range mirrors rodent distribution</td>
+      <td>Geographic range mirrors rodent distribution.</td>
     </tr>
 
     <tr>
       <td><strong>Human-to-human transmission</strong></td>
       <td>None documented</td>
-      <td>Rare (Andes virus only)</td>
-      <td>Occurs mainly in Argentina/Chile</td>
+      <td>Rare, mainly associated with Andes virus</td>
+      <td>Occurs mainly in Argentina and Chile</td>
     </tr>
 
     <tr>
       <td><strong>Typical exposure setting</strong></td>
-      <td>Rural/farming, forest exposure, rodent-infested buildings</td>
-      <td>Rural, peridomestic, occupational exposure</td>
-      <td>Aerosolized rodent excreta is main route</td>
+      <td>Rural/farming areas, forest exposure, and rodent-infested buildings</td>
+      <td>Rural, peridomestic, and occupational exposure</td>
+      <td>Aerosolized rodent excreta is the main route of exposure.</td>
     </tr>
   </tbody>
 </table>
