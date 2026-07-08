@@ -1,16 +1,134 @@
-# Evidence Surveillance
+## Developer Documentation: Evidence Surveillance Hub Prototype
 
-The Evidence Synthesis Team at the Public Health Agency of Canada supports evidence-based decision making on priority public health issues by using the best ES methods to develop trustworthy, timely evidence (e.g., systematic review, meta-analysis, scoping review, and living evidence reviews).
+This repository contains a Quarto-based static website for publishing outbreak evidence surveillance outputs. The site is built with Quarto, hosted through GitHub Pages, and deployed automatically using GitHub Actions.
 
-# Our role in Public Health Emergencies
-# Evidence Surveillance
-Evidence surveillance involves the ongoing search of literature, mapping of evidence to foci, and synthesis of key findings​. This approach is well suited for priority topics where multiple groups are looking for evidence on different topic areas (e.g., therapeutics and epidemiological parameters).​
+The purpose of the project is to provide a searchable, downloadable, and maintainable public-facing interface for outbreak-specific evidence surveillance datasets.
 
-# Outputs
-Evidence surveillance outputs may include accessible citation databases and email updates highlighting key research.
+---
 
-# Repository Contents
+## Technology Stack
 
-This repository contains the source files and outbreak-specific CSV datasets produced as part of evidence surveillance efforts.
+* **Quarto**: Static site generation
+* **Observable JavaScript (OJS)**: Interactive CSV loading, searching, filtering, and table display
+* **GitHub Pages**: Static site hosting
+* **GitHub Actions**: Automated rendering and deployment
+* **CSV files**: Source data for outbreak evidence tables
+* **XLSX files**: Optional full datasets for end-user download
+* **CSS**: Custom styling for cards, tables, filters, buttons, and page layout
 
-For a more accessible, user-facing version of these outputs, visit the live prototype website: [View the Evidence Surveillance prototype](https://mirisam.github.io/Evidence-Surveillance-Hub-prototype/)
+---
+
+## Repository Structure
+
+```text
+Evidence-Surveillance-Hub-prototype/
+├── _quarto.yml
+├── index.qmd
+├── outbreaks.qmd
+├── methods.qmd
+├── update-guide.qmd
+├── styles.css
+├── _recent-updates.md
+├── scripts/
+│   └── generate_recent_updates.py
+├── outbreaks/
+│   ├── mpox/
+│   │   ├── index.qmd
+│   │   └── data/
+│   │       └── references.csv
+│   ├── hantavirus/
+│   │   ├── index.qmd
+│   │   ├── background/
+│   │   │   └── index.qmd
+│   │   └── data/
+│   │       └── references.csv
+│   └── bundibugyo-ebola/
+│       ├── index.qmd
+│       └── data/
+│           ├── references.csv
+│           └── full-dataset.xlsx
+└── .github/
+    └── workflows/
+        └── publish.yml
+```
+
+---
+
+## Site Configuration
+
+The main Quarto site configuration is stored in:
+
+```text
+_quarto.yml
+```
+
+This file controls the website title, navigation bar, search settings, theme, footer, and custom CSS.
+
+The site uses:
+
+```yaml
+project:
+  type: website
+```
+
+and applies global styling through:
+
+```yaml
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+```
+
+---
+
+## Homepage
+
+The homepage is defined in:
+
+```text
+index.qmd
+```
+
+It includes:
+
+* A project introduction
+* A prototype banner
+* A “Recently Updated” section
+* A summary of the site purpose
+* A high-level workflow description
+* Links to key pages
+
+The “Recently Updated” section is generated automatically and included using:
+
+```markdown
+{{< include _recent-updates.md >}}
+```
+
+The included file is regenerated during deployment by:
+
+```text
+scripts/generate_recent_updates.py
+```
+
+---
+
+## Outbreak Directory
+
+The outbreak directory is defined in:
+
+```text
+outbreaks.qmd
+```
+
+Each outbreak is displayed as a card using Quarto div syntax:
+
+```markdown
+::: {.info-card}
+### Hantavirus
+
+Evidence surveillance data and background information for Hantavirus literature.
+
+[View evidence](outbreaks/hantavirus/)  
+[View background](outbreaks/hantavirus/background/)
+```
