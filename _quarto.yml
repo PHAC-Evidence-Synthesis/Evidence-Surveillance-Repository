@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "Evidence Surveillance Hub"
+  title: "Evidence Surveillance Repository"
   search: true
 
   navbar:
@@ -20,7 +20,7 @@ website:
         text: Update Guide
   
   page-footer:
-    left: "Evidence Surveillance Hub — Proof of Concept"
+    left: "Evidence Surveillance Repository"
     right: "Generated with Quarto and GitHub Pages"
 
 format:
