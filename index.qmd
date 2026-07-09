@@ -3,20 +3,23 @@ title: "Home"
 ---
 
 ::: {.hero-banner}
-<span class="prototype-badge">Prototype</span>
 
-<div class="hero-title">Evidence Surveillance Hub</div>
+<div class="hero-title">Evidence Surveillance Repository</div>
 
 <div class="hero-subtitle">
-A prototype demonstrating how living evidence surveillance outputs can be published through a searchable, downloadable, and version-controlled platform.
+A live website demonstrating how living evidence surveillance outputs can be published through a searchable, downloadable, and version-controlled platform.
 </div>
 :::
+
+::: {.status-box}
+**Status:** Prototype under development. This website is not intended to represent a production repository or official evidence product.
+:::
+
 {{< include _recent-updates.md >}}
+
 ## Purpose
 
-The Evidence Surveillance Hub provides a simple and sustainable approach for sharing rapidly updated outbreak literature.
-
-[This prototype tests whether a GitHub repository and GitHub Pages website can provide a more accessible alternative to maintaining public evidence surveillance outputs through a spreadsheet alone.]{.highlight-text}
+The Evidence Surveillance Repository provides a simple and sustainable approach for sharing rapidly updated outbreak literature.
 
 ::: {.card-grid}
 
@@ -38,7 +41,4 @@ The underlying dataset can be downloaded as a CSV for reuse by researchers and p
 GitHub tracks changes over time, supporting transparency and reproducibility.
 :::
 
-:::
-::: {.status-box}
-**Status:** Prototype under development. This website is not intended to represent a production repository or official evidence product.
-:::
+
