@@ -17,29 +17,3 @@ A live website demonstrating how living evidence surveillance outputs can be pub
 :::
 
 {{< include _recent-updates.md >}}
-
-## Purpose
-
-The Evidence Surveillance Repository provides a simple and sustainable approach for sharing rapidly updated outbreak literature.
-
-::: {.card-grid}
-
-::: {.info-card}
-### Searchable evidence
-
-Users can browse and filter references by outbreak, study design, and year.
-:::
-
-::: {.info-card}
-### Downloadable data
-
-The underlying dataset can be downloaded as a CSV for reuse by researchers and public health professionals.
-:::
-
-::: {.info-card}
-### Version history
-
-GitHub tracks changes over time, supporting transparency and reproducibility.
-:::
-
-
