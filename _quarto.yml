@@ -14,10 +14,6 @@ website:
         text: Home
       - href: outbreaks.qmd
         text: Outbreaks
-      - href: methods.qmd
-        text: Methods
-      - href: update-guide.qmd
-        text: Update Guide
   
   page-footer:
     left: "Evidence Surveillance Repository"
