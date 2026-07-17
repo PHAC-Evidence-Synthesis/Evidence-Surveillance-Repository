@@ -1,4 +1,3 @@
-
 ## Transient information table
 
 ```{ojs}
@@ -35,7 +34,7 @@ transientTable = transientRaw.map(row =>
 //| echo: false
 
 html`<div class="status-box">
-<strong>${transientTable.length}</strong> records loaded from this information table.<br>
+<strong>${transientTable.length}</strong> records loaded from this transient information table.<br>
 <strong>${transientColumns.length}</strong> columns detected.
 </div>`
 ```
