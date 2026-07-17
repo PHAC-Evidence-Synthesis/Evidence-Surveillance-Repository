@@ -1,17 +1,17 @@
 
-## Transmission information table
+## Transient information table
 
 ```{ojs}
 //| echo: false
 
-transmissionRaw = FileAttachment("data/transmission-info.csv").csv({typed: false})
+transientRaw = FileAttachment("data/bundibugyo transient info.csv").csv({typed: false})
 ```
 
 ```{ojs}
 //| echo: false
 
-transmissionColumns = transmissionRaw.length > 0
-  ? Object.keys(transmissionRaw[0]).filter(c =>
+transientColumns = transientRaw.length > 0
+  ? Object.keys(transientRaw[0]).filter(c =>
       c &&
       c.trim() !== "" &&
       !/^_+$/.test(c.trim()) &&
@@ -24,9 +24,9 @@ transmissionColumns = transmissionRaw.length > 0
 ```{ojs}
 //| echo: false
 
-transmissionTable = transmissionRaw.map(row =>
+transientTable = transientRaw.map(row =>
   Object.fromEntries(
-    transmissionColumns.map(column => [column, row[column]])
+    transientColumns.map(column => [column, row[column]])
   )
 )
 ```
@@ -35,8 +35,8 @@ transmissionTable = transmissionRaw.map(row =>
 //| echo: false
 
 html`<div class="status-box">
-<strong>${transmissionTable.length}</strong> records loaded from this information table.<br>
-<strong>${transmissionColumns.length}</strong> columns detected.
+<strong>${transientTable.length}</strong> records loaded from this information table.<br>
+<strong>${transientColumns.length}</strong> columns detected.
 </div>`
 ```
 
@@ -45,8 +45,8 @@ html`<div class="status-box">
 ```{ojs}
 //| echo: false
 
-viewof searched_transmission = Inputs.search(
-  transmissionTable,
+viewof searched_transient = Inputs.search(
+  transientTable,
   {placeholder: "Search this table..."}
 )
 ```
@@ -57,14 +57,14 @@ viewof searched_transmission = Inputs.search(
 ```{ojs}
 //| echo: false
 
-transmissionCleanValue = value =>
+transientCleanValue = value =>
   value === null || value === undefined ? "" : String(value).trim()
 ```
 
 ```{ojs}
 //| echo: false
 
-transmissionFilterableColumns = transmissionColumns.filter(column =>
+transientFilterableColumns = transientColumns.filter(column =>
   column &&
   column.trim() !== "" &&
   !/^_+$/.test(column.trim()) &&
@@ -75,13 +75,13 @@ transmissionFilterableColumns = transmissionColumns.filter(column =>
 ```{ojs}
 //| echo: false
 
-transmissionFilterOptions = Object.fromEntries(
-  transmissionFilterableColumns.map(column => [
+transientFilterOptions = Object.fromEntries(
+  transientFilterableColumns.map(column => [
     column,
     ["All", ...Array.from(
       new Set(
-        transmissionTable
-          .map(row => transmissionCleanValue(row[column]))
+        transientTable
+          .map(row => transientCleanValue(row[column]))
           .filter(value => value !== "")
       )
     ).sort()]
@@ -92,11 +92,11 @@ transmissionFilterOptions = Object.fromEntries(
 ```{ojs}
 //| echo: false
 
-viewof selectedTransmissionFilters = Inputs.form(
+viewof selectedTransientFilters = Inputs.form(
   Object.fromEntries(
-    transmissionFilterableColumns.map(column => [
+    transientFilterableColumns.map(column => [
       column,
-      Inputs.select(transmissionFilterOptions[column], {label: column})
+      Inputs.select(transientFilterOptions[column], {label: column})
     ])
   )
 )
@@ -107,10 +107,10 @@ viewof selectedTransmissionFilters = Inputs.form(
 ```{ojs}
 //| echo: false
 
-filtered_transmission = searched_transmission.filter(row =>
-  transmissionFilterableColumns.every(column =>
-    selectedTransmissionFilters[column] === "All" ||
-    transmissionCleanValue(row[column]) === selectedTransmissionFilters[column]
+filtered_transient = searched_transient.filter(row =>
+  transientFilterableColumns.every(column =>
+    selectedTransientFilters[column] === "All" ||
+    transientCleanValue(row[column]) === selectedTransientFilters[column]
   )
 )
 ```
@@ -119,15 +119,15 @@ filtered_transmission = searched_transmission.filter(row =>
 //| echo: false
 
 html`<div class="status-box">
-<strong>${filtered_transmission.length}</strong> records shown after search and filters.
+<strong>${filtered_transient.length}</strong> records shown after search and filters.
 </div>`
 ```
 
 ```{ojs}
 //| echo: false
 
-Inputs.table(filtered_transmission, {
-  columns: transmissionColumns,
+Inputs.table(filtered_transient, {
+  columns: transientColumns,
   height: 500,
   select: false
 })
