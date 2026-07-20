@@ -4,7 +4,7 @@
 //| echo: false
 
 transientRaw = FileAttachment("../data/hantavirus-transient-info.csv").csv({typed: false})
-
+```
 
 ```{ojs}
 //| echo: false
