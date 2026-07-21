@@ -117,14 +117,6 @@ filtered_transient = searched_transient.filter(row =>
 ```{ojs}
 //| echo: false
 
-html`<div class="status-box">
-<strong>${filtered_transient.length}</strong> records shown after search and filters.
-</div>`
-```
-
-```{ojs}
-//| echo: false
-
 Inputs.table(filtered_transient, {
   columns: transientColumns,
   height: 500,
@@ -142,3 +134,5 @@ Inputs.table(filtered_transient, {
     }
   }
 })
+```
+
