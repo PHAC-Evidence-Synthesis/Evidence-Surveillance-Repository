@@ -181,7 +181,7 @@ html`<div class="status-box">
 
 Inputs.table(filtered_references, {
   columns: visibleColumns,
-  height: 700,
+  height: 750,
   select: false,
   format: {
     URL: value =>
