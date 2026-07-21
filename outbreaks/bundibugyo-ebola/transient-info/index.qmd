@@ -140,7 +140,7 @@ html`<div class="status-box">
 
 Inputs.table(filtered_transient, {
   columns: transientColumns,
-  height: 500,
+  height: 750,
   select: false,
   format: {
     link: value => {
