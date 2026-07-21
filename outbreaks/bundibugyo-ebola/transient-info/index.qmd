@@ -1,3 +1,10 @@
+---
+title: "Transient Information Table"
+format:
+  html:
+    page-layout: full
+---
+
 ## Transient information table
 
 ```{ojs}
