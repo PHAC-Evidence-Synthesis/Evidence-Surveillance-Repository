@@ -1,5 +1,5 @@
 ---
-title: "Transient Information Table"
+title: "Transient Information"
 format:
   html:
     page-layout: full
@@ -7,6 +7,11 @@ format:
 
 ## Transient information table
 
+The table below includes transient information related to the Bundibugyo ebolavirus outbreak of 2026. The information includes: presentations, news, situation updates, etc. 
+
+**Contact email**: evidence.synthesis-synthese.de.donnees.probantes@phac-aspc.gc.ca.
+
+Search strategy
 ```{ojs}
 //| echo: false
 
@@ -41,15 +46,6 @@ transientTable = transientRaw.map(row =>
     transientColumns.map(column => [column, row[column]])
   )
 )
-```
-
-```{ojs}
-//| echo: false
-
-html`<div class="status-box">
-<strong>${transientTable.length}</strong> records loaded from this transient information table.<br>
-<strong>${transientColumns.length}</strong> columns detected.
-</div>`
 ```
 
 ### Search this table
@@ -125,14 +121,6 @@ filtered_transient = searched_transient.filter(row =>
     transientCleanValue(row[column]) === selectedTransientFilters[column]
   )
 )
-```
-
-```{ojs}
-//| echo: false
-
-html`<div class="status-box">
-<strong>${filtered_transient.length}</strong> records shown after search and filters.
-</div>`
 ```
 
 ```{ojs}
