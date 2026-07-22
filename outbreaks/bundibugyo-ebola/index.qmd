@@ -198,10 +198,6 @@ Inputs.table(filtered_references, {
 ```
 
 <div class="download-buttons">
-<a href="data/references.csv" download="bundibugyo-ebola-key-columns.csv" class="btn btn-primary">
-Download key columns CSV
-</a>
-
 <a href="data/full-dataset.xlsx" download="bundibugyo-ebola-full-dataset.xlsx" class="btn btn-primary">
 Download full Excel dataset
 </a>
