@@ -11,7 +11,7 @@ The table below includes transient information related to the Bundibugyo ebolavi
 
 **Contact email**: evidence.synthesis-synthese.de.donnees.probantes@phac-aspc.gc.ca.
 
-Search strategy
+
 ```{ojs}
 //| echo: false
 
