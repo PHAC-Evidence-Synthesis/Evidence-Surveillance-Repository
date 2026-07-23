@@ -15,7 +15,7 @@ The table below includes transient information related to the Bundibugyo ebolavi
 ```{ojs}
 //| echo: false
 
-sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRI1KuT8CTH-tfkSQDr8yidtYSrK9OutroKCmrP_qD2uCbMZLARuqHNJ0Ddepl4ZrwINvQGZe23uz9h/pub?gid=1057181632&single=true&output=csv"
+sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSh-4T4FIoGBl9bBTIimM4oPghqGgk_R2R2CXMh7AJviFHGQCyXO1u9kJJhSif8UIjqCf-CbmUEvgV_/pub?gid=2112786480&single=true&output=csv"
 ```
 
 ```{ojs}
