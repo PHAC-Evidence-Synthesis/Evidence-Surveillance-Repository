@@ -198,7 +198,7 @@ Inputs.table(filtered_references, {
 ```
 
 <div class="download-buttons">
-<a href="data/full-dataset.xlsx" download="bundibugyo-ebola-full-dataset.xlsx" class="btn btn-primary">
+<a href="data/full-dataset.xlsx" download="full-dataset.xlsx" class="btn btn-primary">
 Download full Excel dataset
 </a>
 </div>
