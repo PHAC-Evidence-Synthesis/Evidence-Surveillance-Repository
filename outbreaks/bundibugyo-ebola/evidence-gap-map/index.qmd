@@ -34,13 +34,3 @@ Use the embedded map below to explore the distribution of evidence by category.
 </div>
 ```
 
-```{=html}
-<p>
-  <a href="https://eppi.ioe.ac.uk/cms/Portals/35/Maps/Mel/EGM_Schools_ERE_RQ2.html?ver=2021-01-08-153143-543"
-     target="_blank"
-     rel="noopener noreferrer"
-     class="btn btn-primary">
-    Open evidence gap map in new tab
-  </a>
-</p>
-```
