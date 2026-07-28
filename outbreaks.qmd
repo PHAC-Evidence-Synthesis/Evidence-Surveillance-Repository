@@ -17,7 +17,7 @@ Evidence surveillance data and background information for Hantavirus literature.
 
 <a href="outbreaks/hantavirus/" class="btn btn-primary">View evidence</a>
 
-<a href="outbreaks/hantavirus/transient-info" class="btn btn-primary">Transient Information</a>
+<a href="outbreaks/hantavirus/transient-info/" class="btn btn-primary">Transient Information</a>
 :::
 
 ::: {.info-card}
@@ -27,7 +27,7 @@ Evidence surveillance data for Bundibugyo Ebolavirus literature.
 
 <a href="outbreaks/bundibugyo-ebola/" class="btn btn-primary">View evidence</a>
 
-<a href="outbreaks/bundibugyo-ebola/transient-info" class="btn btn-primary">Transient Information</a>
+<a href="outbreaks/bundibugyo-ebola/transient-info/" class="btn btn-primary">Transient Information</a>
 
 <a href="outbreaks/bundibugyo-ebola/evidence-gap-map/" class="btn btn-primary">View interactive evidence gap map</a>
 :::
