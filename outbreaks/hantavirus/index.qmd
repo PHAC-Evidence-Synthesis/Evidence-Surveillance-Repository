@@ -48,7 +48,13 @@ Characteristics of the publication are captured: language of the article, primar
 ```{ojs}
 //| echo: false
 
-rawReferences = FileAttachment("data/references.csv").csv({typed: false})
+sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHcFx5-viY-peMEer5hGHVKxC3Wl2heEKr-wH-OId6ptbTv78kKzv4_lWXmGBP-YElU2D7IYQwrfmt/pub?gid=589335676&single=true&output=csv"
+```
+
+```{ojs}
+//| echo: false
+
+rawReferences = d3.csv(sheetUrl)
 ```
 
 ```{ojs}
@@ -58,6 +64,7 @@ visibleColumns = rawReferences.length > 0
   ? Object.keys(rawReferences[0]).filter(c =>
       c &&
       c.trim() !== "" &&
+      !/^_+$/.test(c.trim()) &&
       !c.startsWith("__") &&
       !c.toLowerCase().startsWith("unnamed")
     )
@@ -94,23 +101,107 @@ viewof searched_references = Inputs.search(
   references,
   {placeholder: "Search all fields..."}
 )
+
+```
+<details class="filter-panel">
+<summary><strong>Filter the evidence</strong></summary>
+
+```{ojs}
+//| echo: false
+
+cleanValue = value =>
+  value === null || value === undefined ? "" : String(value).trim()
 ```
 
+```{ojs}
+//| echo: false
+
+filterableColumns = visibleColumns.filter(column =>
+  column &&
+  column.trim() !== "" &&
+  !/^_+$/.test(column.trim()) &&
+  column.trim() !== "__evidence"
+)
+```
+
+```{ojs}
+//| echo: false
+
+filterOptions = Object.fromEntries(
+  filterableColumns.map(column => [
+    column,
+    ["All", ...Array.from(
+      new Set(
+        references
+          .map(row => cleanValue(row[column]))
+          .filter(value => value !== "")
+      )
+    ).sort()]
+  ])
+)
+```
+
+```{ojs}
+//| echo: false
+
+viewof selectedFilters = Inputs.form(
+  Object.fromEntries(
+    filterableColumns.map(column => [
+      column,
+      Inputs.select(filterOptions[column], {label: column})
+    ])
+  )
+)
+```
+
+</details>
+
+```{ojs}
+//| echo: false
+
+filtered_references = searched_references.filter(row =>
+  filterableColumns.every(column =>
+    selectedFilters[column] === "All" ||
+    cleanValue(row[column]) === selectedFilters[column]
+  )
+)
+```
+
+```{ojs}
+//| echo: false
+
+html`<div class="status-box">
+<strong>${filtered_references.length}</strong> records shown after search and filters.
+</div>`
+```
 ## Browse table
 
 ```{ojs}
 //| echo: false
 
-Inputs.table(searched_references, {
+Inputs.table(filtered_references, {
   columns: visibleColumns,
-  height: 700,
-  select: false
+  height: 750,
+  select: false,
+  format: {
+    URL: value =>
+      value
+        ? htl.html`<a href=${value} target="_blank" rel="noopener noreferrer">View link</a>`
+        : "",
+
+    DOI: value =>
+      value
+        ? htl.html`<a href=${`https://doi.org/${value}`} target="_blank" rel="noopener noreferrer">${value}</a>`
+        : ""
+  }
 })
 ```
 
-<a href="data/references.csv" download="hantavirus-references.csv" class="btn btn-primary">
-Download CSV
+<div class="download-buttons">
+<a href="data/full-dataset.xlsx" download="full-dataset.xlsx" class="btn btn-primary">
+Download full Excel dataset
 </a>
+</div>
 
 ::: {.status-box}
 **Note:** This outbreak page uses a generic CSV viewer. Columns may differ across outbreaks depending on the evidence surveillance output.
