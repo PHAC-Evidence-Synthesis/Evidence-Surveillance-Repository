@@ -5,8 +5,6 @@ format:
     page-layout: full
 ---
 
-# Evidence Gap Map
-
 This page displays an interactive evidence gap map generated using EPPI-Mapper.
 
 ::: {.status-box}
@@ -14,15 +12,29 @@ Use the embedded map below to explore the distribution of evidence by category.
 :::
 
 ```{=html}
-<div class="egm-wide-wrapper">
+<div style="
+  width: 95vw;
+  max-width: 95vw;
+  margin-left: calc(50% - 47.5vw);
+  margin-right: calc(50% - 47.5vw);
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+">
   <iframe
     src="https://eppi.ioe.ac.uk/cms/Portals/35/Maps/Mel/EGM_Schools_ERE_RQ2.html?ver=2021-01-08-153143-543"
     title="Interactive Evidence Gap Map"
-    class="egm-iframe">
+    style="
+      width: 100%;
+      height: 1200px;
+      border: 1px solid #d6d9dc;
+      border-radius: 4px;
+      display: block;
+    ">
   </iframe>
 </div>
 ```
 
+```{=html}
 <p>
   <a href="https://eppi.ioe.ac.uk/cms/Portals/35/Maps/Mel/EGM_Schools_ERE_RQ2.html?ver=2021-01-08-153143-543"
      target="_blank"
@@ -31,3 +43,4 @@ Use the embedded map below to explore the distribution of evidence by category.
     Open evidence gap map in new tab
   </a>
 </p>
+```
