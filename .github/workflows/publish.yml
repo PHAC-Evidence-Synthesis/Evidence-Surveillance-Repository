@@ -33,7 +33,7 @@ jobs:
       - name: Generate recent updates
         run: python scripts/generate_recent_updates.py
 
-       - name: Commit recent update state
+      - name: Commit recent update state
         run: |
           if [[ -n $(git status --porcelain data/sheet-update-state.json _recent-updates.md) ]]; then
             git config user.name "github-actions[bot]"
