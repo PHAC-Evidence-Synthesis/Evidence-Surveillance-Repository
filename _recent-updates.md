@@ -20,4 +20,20 @@ This section is generated automatically from linked Google Sheet data sources.
 [View table](outbreaks/bundibugyo-ebola/transient-info/)
 :::
 
+::: {.info-card}
+### Andes Hantavirus Evidence Surveillance
+
+**Updated:** 2026-07-28
+
+[View table](outbreaks/hantavirus/)
+:::
+
+::: {.info-card}
+### Andes Hantavirus Transient Information
+
+**Updated:** 2026-07-28
+
+[View table](outbreaks/hantavirus/transient-info/)
+:::
+
 :::
