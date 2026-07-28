@@ -320,3 +320,14 @@ table {
   margin: 0;
   padding-left: 1.2rem;
 }
+/* Evidence gap map embed */
+
+.egm-embed-wrapper {
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.egm-embed-wrapper iframe {
+  width: 100%;
+  min-height: 900px;
+}
