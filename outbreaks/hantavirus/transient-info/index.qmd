@@ -1,9 +1,27 @@
+---
+title: "Transient Information"
+format:
+  html:
+    page-layout: full
+---
+
 ## Transient information table
+
+The table below includes transient information related to the Andes Hantavirus outbreak of 2026. The information includes: presentations, news, situation updates, etc. 
+
+**Contact email**: evidence.synthesis-synthese.de.donnees.probantes@phac-aspc.gc.ca.
+
 
 ```{ojs}
 //| echo: false
 
-transientRaw = FileAttachment("../data/hantavirus-transient-info.csv").csv({typed: false})
+sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHcFx5-viY-peMEer5hGHVKxC3Wl2heEKr-wH-OId6ptbTv78kKzv4_lWXmGBP-YElU2D7IYQwrfmt/pub?gid=1945345042&single=true&output=csv"
+```
+
+```{ojs}
+//| echo: false
+
+transientRaw = d3.csv(sheetUrl)
 ```
 
 ```{ojs}
@@ -28,15 +46,6 @@ transientTable = transientRaw.map(row =>
     transientColumns.map(column => [column, row[column]])
   )
 )
-```
-
-```{ojs}
-//| echo: false
-
-html`<div class="status-box">
-<strong>${transientTable.length}</strong> records loaded from this transient information table.<br>
-<strong>${transientColumns.length}</strong> columns detected.
-</div>`
 ```
 
 ### Search this table
@@ -117,22 +126,35 @@ filtered_transient = searched_transient.filter(row =>
 ```{ojs}
 //| echo: false
 
-Inputs.table(filtered_transient, {
-  columns: transientColumns,
-  height: 500,
-  select: false,
-  format: {
-    link: value => {
-      if (!value) return ""
+linkFormatters = Object.fromEntries(
+  transientColumns
+    .filter(column =>
+      ["link", "url"].includes(column.trim().toLowerCase()) ||
+      column.trim().toLowerCase().includes("link")
+    )
+    .map(column => [
+      column,
+      value => {
+        if (!value) return ""
 
-      const url = String(value).trim()
-      const href = url.startsWith("http://") || url.startsWith("https://")
-        ? url
-        : `https://${url}`
+        const url = String(value).trim()
+        const href = url.startsWith("http://") || url.startsWith("https://")
+          ? url
+          : `https://${url}`
 
-      return htl.html`<a href=${href} target="_blank" rel="noopener noreferrer">View link</a>`
-    }
-  }
-})
+        return htl.html`<a href=${href} target="_blank" rel="noopener noreferrer">View link</a>`
+      }
+    ])
+)
 ```
 
+```{ojs}
+//| echo: false
+
+Inputs.table(filtered_transient, {
+  columns: transientColumns,
+  height: 700,
+  select: false,
+  format: linkFormatters
+})
+```
