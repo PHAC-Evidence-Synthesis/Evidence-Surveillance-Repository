@@ -33,17 +33,14 @@ CDC, ECDC, WHO, UKHSA, PHAC, PAHO, and others as they are identified by a daily 
 
 Characteristics of the publication are captured: language of the article, primary research or type of non-primary research, and publication status (published, pre-print, report)
 
-**Evidence Map**
+## Evidence Map
 
 - Identifies papers related to the 2026 outbreak associated with the Hondius cruiseship (Y/N)
 - Identifies the samples/subjects in the study: humans, animals, in vitro or in silico AND within humans identifies high risk populations (children <18, elderly >65, pregnant persons, immunocompromised, indigenous, ethnic minorities, healthcare workers and other options).
 - The mode of transmission is captured if reported / relevant to the paper
-- The high level foci of the paper is captured: Epidemiological parameters,  Clinical Data,  Treatment /Prophylaxis,  Immunity,  Other vaccine studies,  Diagnostic / Detection test performance,  Interventions (PHM and IPC),  Genomics and structural characterization,  Knowledge, attitudes and behaviour,  Other epidemiology (e.g. emergence and spread), Indirect impacts of the disease "
+- The high level foci of the paper is captured: Epidemiological parameters,  Clinical Data,  Treatment /Prophylaxis,  Immunity,  Other vaccine studies,  Diagnostic / Detection test performance,  Interventions (PHM and IPC),  Genomics and structural characterization,  Knowledge, attitudes and behaviour,  Other epidemiology (e.g. emergence and spread), Indirect impacts of the disease
 
-
-**The table below is generated from the CSV file stored in this outbreak folder:**
-
-`outbreaks/hantavirus/data/references.csv`
+**The table below is generated from a published Google Sheet CSV link. When the Google Sheet is updated, the website table will update when the page is refreshed.**
 
 ```{ojs}
 //| echo: false
@@ -54,7 +51,7 @@ sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHcFx5-viY-peMEer5h
 ```{ojs}
 //| echo: false
 
-rawReferences = d3.csv(sheetUrl)
+rawReferences = d3.csv(`${sheetUrl}&cacheBust=${Date.now()}`)
 ```
 
 ```{ojs}
@@ -179,24 +176,43 @@ html`<div class="status-box">
 ```{ojs}
 //| echo: false
 
+linkFormatters = Object.fromEntries(
+  visibleColumns
+    .filter(column =>
+      ["link", "url", "doi"].includes(column.trim().toLowerCase()) ||
+      column.trim().toLowerCase().includes("link") ||
+      column.trim().toLowerCase().includes("url")
+    )
+    .map(column => [
+      column,
+      value => {
+        if (!value) return ""
+
+        const text = String(value).trim()
+        const columnName = column.trim().toLowerCase()
+
+        const href = text.startsWith("http://") || text.startsWith("https://")
+          ? text
+          : columnName === "doi"
+            ? `https://doi.org/${text}`
+            : `https://${text}`
+
+        return htl.html`<a href=${href} target="_blank" rel="noopener noreferrer">View link</a>`
+      }
+    ])
+)
+```
+
+```{ojs}
+//| echo: false
+
 Inputs.table(filtered_references, {
   columns: visibleColumns,
   height: 750,
   select: false,
-  format: {
-    URL: value =>
-      value
-        ? htl.html`<a href=${value} target="_blank" rel="noopener noreferrer">View link</a>`
-        : "",
-
-    DOI: value =>
-      value
-        ? htl.html`<a href=${`https://doi.org/${value}`} target="_blank" rel="noopener noreferrer">${value}</a>`
-        : ""
-  }
+  format: linkFormatters
 })
 ```
-
 ::: {.status-box}
-**Note:** This outbreak page uses a generic CSV viewer. Columns may differ across outbreaks depending on the evidence surveillance output.
+**Note:** This outbreak page uses a generic Google Sheet CSV viewer. Columns may differ across outbreaks depending on the evidence surveillance output.
 :::
