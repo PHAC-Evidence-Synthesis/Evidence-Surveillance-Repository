@@ -197,12 +197,6 @@ Inputs.table(filtered_references, {
 })
 ```
 
-<div class="download-buttons">
-<a href="data/full-dataset.xlsx" download="full-dataset.xlsx" class="btn btn-primary">
-Download full Excel dataset
-</a>
-</div>
-
 ::: {.status-box}
 **Note:** This outbreak page uses a generic CSV viewer. Columns may differ across outbreaks depending on the evidence surveillance output.
 :::
