@@ -9,9 +9,21 @@ Each outbreak has its own folder, downloadable CSV and full dataset XLSX file. C
 ::: {.card-grid}
 
 ::: {.info-card}
+### Bundibugyo Ebolavirus (Active)
+
+This evidence surveillance for Bundibugyo ebolavirus literature covers publications from January 1, 2026 to present.
+
+<a href="outbreaks/bundibugyo-ebola/" class="btn btn-primary">View evidence</a>
+
+<a href="outbreaks/bundibugyo-ebola/transient-info/" class="btn btn-primary">Transient Information</a>
+
+<a href="outbreaks/bundibugyo-ebola/evidence-gap-map/" class="btn btn-primary">View interactive evidence gap map</a>
+:::
+
+::: {.info-card}
 ### Hantavirus
 
-Evidence surveillance data and background information for Hantavirus literature.
+This evidence surveillance for New World Hantavirus literature covers publications from January 1, 2026 to June 24, 2026.
 
 <a href="outbreaks/hantavirus/background/" class="btn btn-primary">Background</a>
 
@@ -20,16 +32,6 @@ Evidence surveillance data and background information for Hantavirus literature.
 <a href="outbreaks/hantavirus/transient-info/" class="btn btn-primary">Transient Information</a>
 :::
 
-::: {.info-card}
-### Bundibugyo Ebolavirus
 
-Evidence surveillance data for Bundibugyo Ebolavirus literature.
-
-<a href="outbreaks/bundibugyo-ebola/" class="btn btn-primary">View evidence</a>
-
-<a href="outbreaks/bundibugyo-ebola/transient-info/" class="btn btn-primary">Transient Information</a>
-
-<a href="outbreaks/bundibugyo-ebola/evidence-gap-map/" class="btn btn-primary">View interactive evidence gap map</a>
-:::
 
 :::
