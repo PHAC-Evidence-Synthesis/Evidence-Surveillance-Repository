@@ -175,7 +175,7 @@ html`<div class="status-box">
 </div>`
 ```
 ## Browse table
-
+This table contains several columns. Scroll horizontally to the right to view additional columns.
 ```{ojs}
 //| echo: false
 
