@@ -92,7 +92,7 @@ html`<div class="status-box">
 
 ## Search the evidence
 
-Use the search box below to search across all fields in the dataset.
+Use the search box below to search across all fields in the dataset. Please click on 'Download full Excel dataset' located below the table to download the full dataset for synthesis/analysis as needed.
 
 ```{ojs}
 //| echo: false
