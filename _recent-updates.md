@@ -7,7 +7,7 @@ This section is generated automatically from linked Google Sheet data sources.
 ::: {.info-card}
 ### Bundibugyo Ebolavirus Transient Information
 
-**Updated:** 2026-08-27
+**Updated:** 2026-08-28
 
 [View table](outbreaks/bundibugyo-ebola/transient-info/)
 :::
