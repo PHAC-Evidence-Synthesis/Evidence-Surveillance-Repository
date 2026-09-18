@@ -182,19 +182,19 @@ This chart shows the cumulative growth of the evidence surveillance literature l
 ```{ojs}
 //| echo: false
 
-growthSheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSh-4T4FIoGBl9bBTIimM4oPghqGgk_R2R2CXMh7AJviFHGQCyXO1u9kJJhSif8UIjqCf-CbmUEvgV_/pubhtml?gid=260198020&single=trueE"
+growthRaw = rawReferences
 ```
 
 ```{ojs}
 //| echo: false
 
-growthRaw = d3.csv(`${growthSheetUrl}&cacheBust=${Date.now()}`)
+growthColumns = growthRaw.length > 0 ? Object.keys(growthRaw[0]) : []
 ```
 
 ```{ojs}
 //| echo: false
 
-growthDateColumn = Object.keys(growthRaw[0] || {}).find(column =>
+growthDateColumn = growthColumns.find(column =>
   ["date added", "date_added", "added date", "citation added", "record added"].includes(column.trim().toLowerCase())
 )
 ```
@@ -202,15 +202,33 @@ growthDateColumn = Object.keys(growthRaw[0] || {}).find(column =>
 ```{ojs}
 //| echo: false
 
-growthFocusColumn = Object.keys(growthRaw[0] || {}).find(column =>
-  ["focus", "foci", "topic", "category", "domain"].includes(column.trim().toLowerCase())
+growthFocusColumn = growthColumns.find(column =>
+  ["focus", "foci", "topic", "category", "domain", "high level foci", "high-level foci"].includes(column.trim().toLowerCase())
 )
 ```
 
 ```{ojs}
 //| echo: false
 
-parseDate = d3.utcParse("%Y-%m-%d")
+parseDateFlexible = value => {
+  const text = String(value || "").trim()
+
+  if (!text) return null
+
+  const parsers = [
+    d3.utcParse("%Y-%m-%d"),
+    d3.utcParse("%y/%m/%d"),
+    d3.utcParse("%d-%b-%y"),
+    d3.utcParse("%d-%B-%y")
+  ]
+
+  for (const parser of parsers) {
+    const parsed = parser(text)
+    if (parsed) return parsed
+  }
+
+  return null
+}
 ```
 
 ```{ojs}
@@ -220,7 +238,7 @@ growthRecords = growthDateColumn
   ? growthRaw
       .map(row => ({
         ...row,
-        date_added: parseDate(String(row[growthDateColumn]).trim()),
+        date_added: parseDateFlexible(row[growthDateColumn]),
         focus: growthFocusColumn ? String(row[growthFocusColumn] || "").trim() : "All records"
       }))
       .filter(row => row.date_added)
@@ -270,57 +288,58 @@ dailyGrowth = Array.from(
 ```{ojs}
 //| echo: false
 
-cumulativeGrowth = {
-  let total = 0
-  return dailyGrowth.map(row => {
-    total += row.count
-    return {
-      date: row.date,
-      new_records: row.count,
-      cumulative_records: total
-    }
-  })
-}
+cumulativeGrowth = dailyGrowth.map((row, index) => ({
+  date: row.date,
+  new_records: row.count,
+  cumulative_records: d3.sum(dailyGrowth.slice(0, index + 1), d => d.count)
+}))
 ```
 
 ```{ojs}
 //| echo: false
 
 html`<div class="status-box">
-<strong>${selectedGrowthRecords.length}</strong> records included in this chart.
-${growthDateColumn ? html`<br>Date column used: <strong>${growthDateColumn}</strong>` : ""}
-${growthFocusColumn ? html`<br>Filter column used: <strong>${growthFocusColumn}</strong>` : ""}
+<strong>${growthRaw.length}</strong> total records loaded.<br>
+<strong>${growthRecords.length}</strong> records included in the growth chart.<br>
+Date column detected: <strong>${growthDateColumn || "No date column found"}</strong>
+${growthFocusColumn ? html`<br>Filter column detected: <strong>${growthFocusColumn}</strong>` : ""}
 </div>`
 ```
 
 ```{ojs}
 //| echo: false
 
-Plot.plot({
-  height: 420,
-  marginLeft: 60,
-  marginBottom: 50,
-  x: {
-    label: "Date added"
-  },
-  y: {
-    label: "Cumulative number of records",
-    grid: true
-  },
-  marks: [
-    Plot.lineY(cumulativeGrowth, {
-      x: "date",
-      y: "cumulative_records",
-      strokeWidth: 3
-    }),
-    Plot.dot(cumulativeGrowth, {
-      x: "date",
-      y: "cumulative_records",
-      r: 4
-    }),
-    Plot.ruleY([0])
-  ]
-})
+growthDateColumn && cumulativeGrowth.length > 0
+  ? Plot.plot({
+      height: 420,
+      marginLeft: 60,
+      marginBottom: 50,
+      x: {
+        label: "Date added"
+      },
+      y: {
+        label: "Cumulative number of records",
+        grid: true
+      },
+      marks: [
+        Plot.lineY(cumulativeGrowth, {
+          x: "date",
+          y: "cumulative_records",
+          stroke: "#26374a",
+          strokeWidth: 3
+        }),
+        Plot.dot(cumulativeGrowth, {
+          x: "date",
+          y: "cumulative_records",
+          fill: "#26374a",
+          r: 4
+        }),
+        Plot.ruleY([0])
+      ]
+    })
+  : html`<div class="status-box">
+      No growth chart could be generated. Make sure the dataset has a date column called <strong>Date Added</strong>.
+    </div>`
 ```
 
 
