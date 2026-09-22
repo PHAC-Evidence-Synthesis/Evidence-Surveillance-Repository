@@ -90,90 +90,6 @@ html`<div class="status-box">
 </div>`
 ```
 
-## Search the evidence
-
-Use the search box below to search across all fields in the dataset. Please click on 'Download full Excel dataset' located below the table to download the full dataset for synthesis/analysis as needed.
-
-```{ojs}
-//| echo: false
-
-viewof searched_references = Inputs.search(
-  references,
-  {placeholder: "Search all fields..."}
-)
-
-```
-<details class="filter-panel">
-<summary><strong>Filter the evidence</strong></summary>
-
-```{ojs}
-//| echo: false
-
-cleanValue = value =>
-  value === null || value === undefined ? "" : String(value).trim()
-```
-
-```{ojs}
-//| echo: false
-
-filterableColumns = visibleColumns.filter(column =>
-  column &&
-  column.trim() !== "" &&
-  !/^_+$/.test(column.trim()) &&
-  column.trim() !== "__evidence"
-)
-```
-
-```{ojs}
-//| echo: false
-
-filterOptions = Object.fromEntries(
-  filterableColumns.map(column => [
-    column,
-    ["All", ...Array.from(
-      new Set(
-        references
-          .map(row => cleanValue(row[column]))
-          .filter(value => value !== "")
-      )
-    ).sort()]
-  ])
-)
-```
-
-```{ojs}
-//| echo: false
-
-viewof selectedFilters = Inputs.form(
-  Object.fromEntries(
-    filterableColumns.map(column => [
-      column,
-      Inputs.select(filterOptions[column], {label: column})
-    ])
-  )
-)
-```
-
-</details>
-
-```{ojs}
-//| echo: false
-
-filtered_references = searched_references.filter(row =>
-  filterableColumns.every(column =>
-    selectedFilters[column] === "All" ||
-    cleanValue(row[column]) === selectedFilters[column]
-  )
-)
-```
-
-```{ojs}
-//| echo: false
-
-html`<div class="status-box">
-<strong>${filtered_references.length}</strong> records shown after search and filters.
-</div>`
-```
 
 ## Growth of the literature list
 
@@ -341,7 +257,90 @@ growthDateColumn && cumulativeGrowth.length > 0
       No growth chart could be generated. Make sure the dataset has a date column called <strong>Date Added</strong>.
     </div>`
 ```
+## Search the evidence
 
+Use the search box below to search across all fields in the dataset. Please click on 'Download full Excel dataset' located below the table to download the full dataset for synthesis/analysis as needed.
+
+```{ojs}
+//| echo: false
+
+viewof searched_references = Inputs.search(
+  references,
+  {placeholder: "Search all fields..."}
+)
+
+```
+<details class="filter-panel">
+<summary><strong>Filter the evidence</strong></summary>
+
+```{ojs}
+//| echo: false
+
+cleanValue = value =>
+  value === null || value === undefined ? "" : String(value).trim()
+```
+
+```{ojs}
+//| echo: false
+
+filterableColumns = visibleColumns.filter(column =>
+  column &&
+  column.trim() !== "" &&
+  !/^_+$/.test(column.trim()) &&
+  column.trim() !== "__evidence"
+)
+```
+
+```{ojs}
+//| echo: false
+
+filterOptions = Object.fromEntries(
+  filterableColumns.map(column => [
+    column,
+    ["All", ...Array.from(
+      new Set(
+        references
+          .map(row => cleanValue(row[column]))
+          .filter(value => value !== "")
+      )
+    ).sort()]
+  ])
+)
+```
+
+```{ojs}
+//| echo: false
+
+viewof selectedFilters = Inputs.form(
+  Object.fromEntries(
+    filterableColumns.map(column => [
+      column,
+      Inputs.select(filterOptions[column], {label: column})
+    ])
+  )
+)
+```
+
+</details>
+
+```{ojs}
+//| echo: false
+
+filtered_references = searched_references.filter(row =>
+  filterableColumns.every(column =>
+    selectedFilters[column] === "All" ||
+    cleanValue(row[column]) === selectedFilters[column]
+  )
+)
+```
+
+```{ojs}
+//| echo: false
+
+html`<div class="status-box">
+<strong>${filtered_references.length}</strong> records shown after search and filters.
+</div>`
+```
 
 ## Browse table
 This table contains several columns. Scroll horizontally to the right to view additional columns.
