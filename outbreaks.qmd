@@ -17,7 +17,6 @@ This evidence surveillance for Bundibugyo ebolavirus literature covers publicati
 
 <a href="outbreaks/bundibugyo-ebola/transient-info/" class="btn btn-primary">Transient Information</a>
 
-<a href="outbreaks/bundibugyo-ebola/evidence-gap-map/" class="btn btn-primary">View interactive evidence gap map</a>
 :::
 
 ::: {.info-card}
