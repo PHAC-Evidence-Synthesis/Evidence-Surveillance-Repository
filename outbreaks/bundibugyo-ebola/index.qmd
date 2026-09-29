@@ -345,37 +345,64 @@ html`<div class="status-box">
 ## Browse table
 
 ::: {.status-box}
-**Viewing tip:** This table may contain more records than are visible at once. Use the search box, filters, or scroll within the table to view additional records.
+**Viewing tip:** This table contains many records. Scroll inside the table to view all references, or use the search box and filters to narrow the results.
 :::
 
 ```{ojs}
 //| echo: false
 
-tableHeight = Math.min(
-  2500,
-  Math.max(900, filtered_references.length * 38 + 100)
-)
+formatCell = (column, value) => {
+  const text = value === null || value === undefined ? "" : String(value).trim()
+  const columnName = column.trim().toLowerCase()
+
+  if (!text) return ""
+
+  if (
+    columnName === "url" ||
+    columnName === "link" ||
+    columnName.includes("url") ||
+    columnName.includes("link")
+  ) {
+    const href = text.startsWith("http://") || text.startsWith("https://")
+      ? text
+      : `https://${text}`
+
+    return htl.html`<a href=${href} target="_blank" rel="noopener noreferrer">View link</a>`
+  }
+
+  if (columnName === "doi") {
+    const href = text.startsWith("http://") || text.startsWith("https://")
+      ? text
+      : `https://doi.org/${text}`
+
+    return htl.html`<a href=${href} target="_blank" rel="noopener noreferrer">${text}</a>`
+  }
+
+  return text
+}
 ```
 
 ```{ojs}
 //| echo: false
 
-Inputs.table(filtered_references, {
-  columns: visibleColumns,
-  height: tableHeight,
-  select: false,
-  format: {
-    URL: value =>
-      value
-        ? htl.html`<a href=${value} target="_blank" rel="noopener noreferrer">View link</a>`
-        : "",
-
-    DOI: value =>
-      value
-        ? htl.html`<a href=${`https://doi.org/${value}`} target="_blank" rel="noopener noreferrer">${value}</a>`
-        : ""
-  }
-})
+html`
+<div class="scroll-table-wrapper">
+  <table class="scroll-table">
+    <thead>
+      <tr>
+        ${visibleColumns.map(column => html`<th>${column}</th>`)}
+      </tr>
+    </thead>
+    <tbody>
+      ${filtered_references.map(row => html`
+        <tr>
+          ${visibleColumns.map(column => html`<td>${formatCell(column, row[column])}</td>`)}
+        </tr>
+      `)}
+    </tbody>
+  </table>
+</div>
+`
 ```
 
 ::: {.status-box}
