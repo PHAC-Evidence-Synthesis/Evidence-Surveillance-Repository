@@ -385,24 +385,51 @@ formatCell = (column, value) => {
 ```{ojs}
 //| echo: false
 
-html`
-<div class="scroll-table-wrapper">
-  <table class="scroll-table">
-    <thead>
-      <tr>
-        ${visibleColumns.map(column => html`<th>${column}</th>`)}
-      </tr>
-    </thead>
-    <tbody>
-      ${filtered_references.map(row => html`
-        <tr>
-          ${visibleColumns.map(column => html`<td>${formatCell(column, row[column])}</td>`)}
-        </tr>
-      `)}
-    </tbody>
-  </table>
-</div>
-`
+tableWithTopScroll = {
+  const tableBlock = html`
+    <div class="top-scroll-wrapper">
+      <div class="top-scroll-content"></div>
+    </div>
+
+    <div class="scroll-table-wrapper">
+      <table class="scroll-table">
+        <thead>
+          <tr>
+            ${visibleColumns.map(column => html`<th>${column}</th>`)}
+          </tr>
+        </thead>
+        <tbody>
+          ${filtered_references.map(row => html`
+            <tr>
+              ${visibleColumns.map(column => html`<td>${formatCell(column, row[column])}</td>`)}
+            </tr>
+          `)}
+        </tbody>
+      </table>
+    </div>
+  `
+
+  setTimeout(() => {
+    const topScroll = tableBlock.querySelector(".top-scroll-wrapper")
+    const topScrollContent = tableBlock.querySelector(".top-scroll-content")
+    const tableWrapper = tableBlock.querySelector(".scroll-table-wrapper")
+    const table = tableBlock.querySelector(".scroll-table")
+
+    if (!topScroll || !topScrollContent || !tableWrapper || !table) return
+
+    topScrollContent.style.width = table.scrollWidth + "px"
+
+    topScroll.addEventListener("scroll", () => {
+      tableWrapper.scrollLeft = topScroll.scrollLeft
+    })
+
+    tableWrapper.addEventListener("scroll", () => {
+      topScroll.scrollLeft = tableWrapper.scrollLeft
+    })
+  }, 0)
+
+  return tableBlock
+}
 ```
 
 ::: {.status-box}
