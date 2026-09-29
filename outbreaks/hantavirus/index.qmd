@@ -53,6 +53,11 @@ sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHcFx5-viY-peMEer5h
 
 rawReferences = d3.csv(`${sheetUrl}&cacheBust=${Date.now()}`)
 ```
+html`<div class="status-box">
+<strong>${rawReferences.length}</strong> raw rows loaded from Google Sheets.<br>
+<strong>${Object.keys(rawReferences[0] || {}).length}</strong> columns detected.<br>
+<strong>Columns:</strong> ${Object.keys(rawReferences[0] || {}).join(", ")}
+</div>`
 
 ```{ojs}
 //| echo: false
