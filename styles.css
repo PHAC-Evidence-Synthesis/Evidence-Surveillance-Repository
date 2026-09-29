@@ -320,3 +320,52 @@ table {
   margin: 0;
   padding-left: 1.2rem;
 }
+
+/* Scrollable full evidence table */
+
+.scroll-table-wrapper {
+  max-height: 1000px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border: 1px solid #d6d9dc;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+}
+
+.scroll-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: white;
+}
+
+.scroll-table th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: #418AD2;
+  color: white;
+  font-weight: 700;
+  padding: 0.65rem;
+  border-bottom: 2px solid #2F6FA8;
+  text-align: left;
+  min-width: 160px;
+}
+
+.scroll-table td {
+  padding: 0.65rem;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: top;
+  min-width: 160px;
+  max-width: 400px;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.scroll-table tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.scroll-table tbody tr:hover {
+  background-color: #eef3f8;
+}
