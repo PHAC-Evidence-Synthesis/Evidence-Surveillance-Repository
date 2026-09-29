@@ -343,13 +343,26 @@ html`<div class="status-box">
 ```
 
 ## Browse table
-This table contains several columns. Scroll horizontally to the right to view additional columns.
+
+::: {.status-box}
+**Viewing tip:** This table may contain more records than are visible at once. Use the search box, filters, or scroll within the table to view additional records.
+:::
+
+```{ojs}
+//| echo: false
+
+tableHeight = Math.min(
+  2500,
+  Math.max(900, filtered_references.length * 38 + 100)
+)
+```
+
 ```{ojs}
 //| echo: false
 
 Inputs.table(filtered_references, {
   columns: visibleColumns,
-  height: 750,
+  height: tableHeight,
   select: false,
   format: {
     URL: value =>
@@ -364,12 +377,6 @@ Inputs.table(filtered_references, {
   }
 })
 ```
-
-<div class="download-buttons">
-<a href="data/full-dataset.xlsx" download="full-dataset.xlsx" class="btn btn-primary">
-Download full Excel dataset
-</a>
-</div>
 
 ::: {.status-box}
 **Note:** This outbreak page uses a generic CSV viewer. Columns may differ across outbreaks depending on the evidence surveillance output.
