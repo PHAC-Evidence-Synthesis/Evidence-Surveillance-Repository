@@ -183,6 +183,12 @@ table {
 .hero-text {
   flex: 1;
 }
+
+/* Show first column in custom scrollable evidence tables */
+.observablehq .scroll-table th:first-child,
+.observablehq .scroll-table td:first-child {
+  display: table-cell !important;
+}
 /* Evidence table styling */
 
 .observablehq table th {
