@@ -7,7 +7,7 @@ This section is generated automatically from linked Google Sheet data sources.
 ::: {.info-card}
 ### Bundibugyo Ebolavirus Evidence Surveillance
 
-**Updated:** 2026-10-02
+**Updated:** 2026-10-06
 
 [View table](outbreaks/bundibugyo-ebola/)
 :::
@@ -15,7 +15,7 @@ This section is generated automatically from linked Google Sheet data sources.
 ::: {.info-card}
 ### Bundibugyo Ebolavirus Transient Information
 
-**Updated:** 2026-10-01
+**Updated:** 2026-10-06
 
 [View table](outbreaks/bundibugyo-ebola/transient-info/)
 :::
