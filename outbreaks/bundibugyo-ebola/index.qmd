@@ -432,6 +432,10 @@ tableWithTopScroll = {
 }
 ```
 
-::: {.status-box}
-**Note:** This outbreak page uses a generic CSV viewer. Columns may differ across outbreaks depending on the evidence surveillance output.
-:::
+<div class="download-buttons">
+  <a href="data/bdbv-full-dataset.xlsx" 
+     download="bdbv-full-dataset.xlsx" 
+     class="btn btn-primary">
+    Download full Excel dataset
+  </a>
+</div>
