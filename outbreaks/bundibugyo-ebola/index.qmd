@@ -127,20 +127,49 @@ growthFocusColumn = growthColumns.find(column =>
 //| echo: false
 
 parseDateFlexible = value => {
-  const text = String(value || "").trim()
+  const text = String(value ?? "").trim()
 
   if (!text) return null
 
-  const parsers = [
-    d3.utcParse("%Y-%m-%d"),
-    d3.utcParse("%y/%m/%d"),
-    d3.utcParse("%d-%b-%y"),
-    d3.utcParse("%d-%B-%y")
+  const formats = [
+    "%Y-%m-%d",
+    "%Y/%m/%d",
+    "%y/%m/%d",
+    "%m/%d/%Y",
+    "%m/%d/%y",
+    "%d/%m/%Y",
+    "%d/%m/%y",
+    "%d-%b-%y",
+    "%d-%b-%Y",
+    "%d-%B-%y",
+    "%d-%B-%Y",
+    "%d %b %Y",
+    "%d %B %Y",
+    "%b %d, %Y",
+    "%B %d, %Y",
+    "%Y-%m-%d %H:%M:%S",
+    "%Y-%m-%dT%H:%M:%S"
   ]
 
-  for (const parser of parsers) {
-    const parsed = parser(text)
-    if (parsed) return parsed
+  for (const format of formats) {
+    const parsed = d3.utcParse(format)(text)
+
+    if (parsed && !isNaN(parsed.getTime())) {
+      return parsed
+    }
+  }
+
+  // Handle numeric Google Sheets/Excel date serials
+  const serial = Number(text)
+
+  if (
+    Number.isInteger(serial) &&
+    serial > 30000 &&
+    serial < 80000
+  ) {
+    return new Date(
+      Date.UTC(1899, 11, 30) + serial * 86400000
+    )
   }
 
   return null
