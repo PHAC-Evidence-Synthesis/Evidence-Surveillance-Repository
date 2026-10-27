@@ -5,7 +5,7 @@ website:
   title: "Evidence Surveillance Repository"
   search: true
 
-google-analytics: "G-PC9NW3DMXX"
+  google-analytics: "G-PC9NW3DMXX"
 
   navbar:
     background: "#26374a"
