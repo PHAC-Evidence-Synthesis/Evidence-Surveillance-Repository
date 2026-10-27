@@ -2,14 +2,14 @@
   "bundibugyo-ebola": {
     "title": "Bundibugyo Ebolavirus Evidence Surveillance",
     "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSh-4T4FIoGBl9bBTIimM4oPghqGgk_R2R2CXMh7AJviFHGQCyXO1u9kJJhSif8UIjqCf-CbmUEvgV_/pub?gid=260198020&single=true&output=csv",
-    "hash": "c49f17d593a5458b62aa725670aa049c631359ec1c7766c549b5f5a858fdcd8b",
-    "updated": "2026-10-21"
+    "hash": "3daea6c59680315a18139a8872fd868bd303b0a31d910f7ae2581b90cc96ff76",
+    "updated": "2026-10-27"
   },
   "bundibugyo-ebola/transient-info": {
     "title": "Bundibugyo Ebolavirus Transient Information",
     "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSh-4T4FIoGBl9bBTIimM4oPghqGgk_R2R2CXMh7AJviFHGQCyXO1u9kJJhSif8UIjqCf-CbmUEvgV_/pub?gid=2112786480&single=true&output=csv",
-    "hash": "3568f3b124b92436f07fb81db5c8f8429b78d82630b610607e75e7d66e1c5c10",
-    "updated": "2026-10-22"
+    "hash": "bf52f349f3a5d1dd37115cab92a6550c5c062c2dea48094f2085eb7ab385ae6d",
+    "updated": "2026-10-27"
   },
   "hantavirus": {
     "title": "Andes Hantavirus Evidence Surveillance",
