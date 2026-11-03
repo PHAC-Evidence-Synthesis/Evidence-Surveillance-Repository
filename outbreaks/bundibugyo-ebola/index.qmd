@@ -91,201 +91,23 @@ html`<div class="status-box">
 ```
 
 
-## Growth of the literature list
+## Interactive Evidence Dashboard
 
-This chart shows the cumulative growth of the evidence surveillance literature list over time.
+Explore the interactive dashboard below to visualize the distribution and characteristics of the evidence surveillance literature.
 
-```{ojs}
-//| echo: false
-
-growthRaw = rawReferences
+```{=html}
+<div style="width: 100%; margin: 1.5rem 0;">
+  <iframe
+    src="https://datastudio.google.com/embed/reporting/44cd8538-a52a-4b4d-b2c7-fe21b1d41058/page/5JGCG"
+    width="100%"
+    height="750"
+    style="border: 1px solid #d6d9dc; border-radius: 6px;"
+    title="Interactive Evidence Surveillance Dashboard"
+    allowfullscreen>
+  </iframe>
+</div>
 ```
 
-```{ojs}
-//| echo: false
-
-growthColumns = growthRaw.length > 0 ? Object.keys(growthRaw[0]) : []
-```
-
-```{ojs}
-//| echo: false
-
-growthDateColumn = growthColumns.find(column =>
-  ["date added", "date_added", "added date", "citation added", "record added"].includes(column.trim().toLowerCase())
-)
-```
-
-```{ojs}
-//| echo: false
-
-growthFocusColumn = growthColumns.find(column =>
-  ["focus", "foci", "topic", "category", "domain", "high level foci", "high-level foci"].includes(column.trim().toLowerCase())
-)
-```
-
-```{ojs}
-//| echo: false
-
-parseDateFlexible = value => {
-  const text = String(value ?? "").trim()
-
-  if (!text) return null
-
-  const formats = [
-    "%Y-%m-%d",
-    "%Y/%m/%d",
-    "%y/%m/%d",
-    "%m/%d/%Y",
-    "%m/%d/%y",
-    "%d/%m/%Y",
-    "%d/%m/%y",
-    "%d-%b-%y",
-    "%d-%b-%Y",
-    "%d-%B-%y",
-    "%d-%B-%Y",
-    "%d %b %Y",
-    "%d %B %Y",
-    "%b %d, %Y",
-    "%B %d, %Y",
-    "%Y-%m-%d %H:%M:%S",
-    "%Y-%m-%dT%H:%M:%S"
-  ]
-
-  for (const format of formats) {
-    const parsed = d3.utcParse(format)(text)
-
-    if (parsed && !isNaN(parsed.getTime())) {
-      return parsed
-    }
-  }
-
-  // Handle numeric Google Sheets/Excel date serials
-  const serial = Number(text)
-
-  if (
-    Number.isInteger(serial) &&
-    serial > 30000 &&
-    serial < 80000
-  ) {
-    return new Date(
-      Date.UTC(1899, 11, 30) + serial * 86400000
-    )
-  }
-
-  return null
-}
-```
-
-```{ojs}
-//| echo: false
-
-growthRecords = growthDateColumn
-  ? growthRaw
-      .map(row => ({
-        ...row,
-        date_added: parseDateFlexible(row[growthDateColumn]),
-        focus: growthFocusColumn ? String(row[growthFocusColumn] || "").trim() : "All records"
-      }))
-      .filter(row => row.date_added)
-  : []
-```
-
-```{ojs}
-//| echo: false
-
-focusOptions = growthFocusColumn
-  ? ["All", ...Array.from(new Set(growthRecords.map(row => row.focus).filter(value => value !== ""))).sort()]
-  : ["All"]
-```
-
-```{ojs}
-//| echo: false
-
-viewof selectedFocus = Inputs.select(focusOptions, {
-  label: "Filter by focus area"
-})
-```
-
-```{ojs}
-//| echo: false
-
-selectedGrowthRecords = selectedFocus === "All"
-  ? growthRecords
-  : growthRecords.filter(row => row.focus === selectedFocus)
-```
-
-```{ojs}
-//| echo: false
-
-dailyGrowth = Array.from(
-  d3.rollup(
-    selectedGrowthRecords,
-    rows => rows.length,
-    row => +d3.utcDay(row.date_added)
-  ),
-  ([date, count]) => ({
-    date: new Date(date),
-    count: count
-  })
-).sort((a, b) => d3.ascending(a.date, b.date))
-```
-
-```{ojs}
-//| echo: false
-
-cumulativeGrowth = dailyGrowth.map((row, index) => ({
-  date: row.date,
-  new_records: row.count,
-  cumulative_records: d3.sum(dailyGrowth.slice(0, index + 1), d => d.count)
-}))
-```
-
-```{ojs}
-//| echo: false
-
-html`<div class="status-box">
-<strong>${growthRaw.length}</strong> total records loaded.<br>
-<strong>${growthRecords.length}</strong> records included in the growth chart.<br>
-Date column detected: <strong>${growthDateColumn || "No date column found"}</strong>
-${growthFocusColumn ? html`<br>Filter column detected: <strong>${growthFocusColumn}</strong>` : ""}
-</div>`
-```
-
-```{ojs}
-//| echo: false
-
-growthDateColumn && cumulativeGrowth.length > 0
-  ? Plot.plot({
-      height: 420,
-      marginLeft: 60,
-      marginBottom: 50,
-      x: {
-        label: "Date added"
-      },
-      y: {
-        label: "Cumulative number of records",
-        grid: true
-      },
-      marks: [
-        Plot.lineY(cumulativeGrowth, {
-          x: "date",
-          y: "cumulative_records",
-          stroke: "#26374a",
-          strokeWidth: 3
-        }),
-        Plot.dot(cumulativeGrowth, {
-          x: "date",
-          y: "cumulative_records",
-          fill: "#26374a",
-          r: 4
-        }),
-        Plot.ruleY([0])
-      ]
-    })
-  : html`<div class="status-box">
-      No growth chart could be generated. Make sure the dataset has a date column called <strong>Date Added</strong>.
-    </div>`
-```
 ## Search the evidence
 
 Use the search box below to search across all fields in the dataset. Please click on 'Download full Excel dataset' located below the table to download the full dataset for synthesis/analysis as needed.
