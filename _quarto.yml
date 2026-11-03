@@ -27,6 +27,6 @@ format:
     toc: false
     page-layout: full
     grid:
-      body-width: 1200px
+      body-width: 1400px
       margin-width: 100px
       gutter-width: 1rem
