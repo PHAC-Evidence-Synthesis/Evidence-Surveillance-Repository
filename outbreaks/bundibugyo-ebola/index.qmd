@@ -41,6 +41,43 @@ Characteristics of the publication are captured: language of the article, primar
 
 **Note:** the literature list includes all ebola research identified, however only bundibugyo literature is fully characterized.
 
+
+```{ojs}
+//| echo: false
+
+sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSh-4T4FIoGBl9bBTIimM4oPghqGgk_R2R2CXMh7AJviFHGQCyXO1u9kJJhSif8UIjqCf-CbmUEvgV_/pub?gid=260198020&single=true&output=csv"
+```
+
+```{ojs}
+//| echo: false
+
+rawReferences = d3.csv(sheetUrl)
+```
+
+```{ojs}
+//| echo: false
+
+visibleColumns = rawReferences.length > 0
+  ? Object.keys(rawReferences[0]).filter(c =>
+      c &&
+      c.trim() !== "" &&
+      !/^_+$/.test(c.trim()) &&
+      !c.startsWith("__") &&
+      !c.toLowerCase().startsWith("unnamed")
+    )
+  : []
+```
+
+```{ojs}
+//| echo: false
+
+references = rawReferences.map(row =>
+  Object.fromEntries(
+    visibleColumns.map(column => [column, row[column]])
+  )
+)
+```
+
 ## Interactive Evidence Dashboard
 
 Explore the interactive dashboard below to visualize the distribution and characteristics of the evidence surveillance literature.
